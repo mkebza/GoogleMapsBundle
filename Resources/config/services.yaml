@@ -1,0 +1,38 @@
+services:
+    _defaults:
+        bind:
+            $apiKey: '%mkebza_google_maps.api_key%'
+            $cache: '@mkebza_google_maps.cache'
+
+
+    mkebza_google_maps.http_client:
+        class: GuzzleHttp\Client
+        public: true
+
+    mkebza_google_maps.cache:
+        class: Symfony\Component\Cache\Simple\FilesystemCache
+        public: true
+
+    MKebza\GoogleMaps\Service\DistanceCalculator:
+        arguments:
+            $client: '@mkebza_google_maps.http_client'
+
+    MKebza\GoogleMaps\Service\StaticMap:
+        arguments:
+            $locale: '%locale%'
+
+    MKebza\GoogleMaps\Twig\Extension\DistanceExtension:
+        tags: ['twig.extension']
+
+    MKebza\GoogleMaps\Twig\Extension\StaticMapExtension:
+        tags: ['twig.extension']
+
+    MKebza\GoogleMaps\Twig\Runtime\StaticMapRuntime:
+        arguments:
+            $generator: '@MKebza\GoogleMaps\Service\StaticMap'
+        tags: ['twig.runtime']
+
+    MKebza\GoogleMaps\Twig\Runtime\DistanceRuntime:
+        arguments:
+            $calculator: '@MKebza\GoogleMaps\Service\DistanceCalculator'
+        tags: ['twig.runtime']
