@@ -111,3 +111,5 @@ Parameters:
 
 For more documentation look at https://developers.google.com/maps/documentation/maps-static/intro 
   
+# Tests
+Running tests is with vendor/bin/simple-phpunit
