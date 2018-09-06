@@ -1,0 +1,27 @@
+{
+    "name": "mkebza/google-maps-bundle",
+    "description": "Symfony bundle for some Google Maps functions",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marek Kebza",
+            "email": "marek@kebza.cz"
+        }
+    ],
+    "autoload": {
+      "psr-4": { "MKebza\\GoogleMaps\\": "" },
+      "exclude-from-classmap": [
+        "/Tests/"
+      ]
+    },
+    "require": {
+       "php": "^7.1.3",
+       "symfony/dependency-injection": "~3.4|~4.0",
+       "symfony/config": "~3.4|~4.0",
+       "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+      "symfony/phpunit-bridge": "^4.1"
+    }
+}
