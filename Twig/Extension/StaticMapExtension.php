@@ -21,6 +21,8 @@ class StaticMapExtension extends AbstractExtension
     {
         return [
             new TwigFunction('gmaps_static', [StaticMapRuntime::class, 'map']),
+            new TwigFunction('gmaps_marker_name', [StaticMapRuntime::class, 'markerName']),
+            new TwigFunction('gmaps_marker_lat_long', [StaticMapRuntime::class, 'markerLatLong']),
         ];
     }
 }

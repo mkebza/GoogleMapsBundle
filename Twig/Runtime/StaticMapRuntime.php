@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace MKebza\GoogleMaps\Twig\Runtime;
 
+use MKebza\GoogleMaps\Service\Marker;
 use MKebza\GoogleMaps\Service\StaticMap;
 use Twig\Extension\RuntimeExtensionInterface;
 
@@ -34,5 +35,15 @@ class StaticMapRuntime implements RuntimeExtensionInterface
     public function map(array $params): string
     {
         return $this->generator->generateUrl($params);
+    }
+
+    public function markerName($name, array $options = []): Marker
+    {
+        return Marker::fromName($name, $options);
+    }
+
+    public function markerLatLong($latitude, $longitude, array $options = []): Marker
+    {
+        return Marker::fromLatitudeLongitude($latitude, $longitude, $options);
     }
 }
